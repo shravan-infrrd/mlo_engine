@@ -2,7 +2,7 @@ require_dependency "mlo/application_controller"
 
 module Mlo
   class SearchesController < ApplicationController
-  include SearchesHelper
+  include Mlo::SearchesHelper
     
 
 		def index
