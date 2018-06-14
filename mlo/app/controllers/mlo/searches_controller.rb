@@ -2,17 +2,20 @@ require_dependency "mlo/application_controller"
 
 module Mlo
   class SearchesController < ApplicationController
+  include SearchesHelper
+    
 
 		def index
 			subdomain = request.subdomains(0).first 
       subdomain = subdomain.gsub('-tdbank', '').to_s rescue ""
-      user = User.find_by( :subdomain => subdomain ).as_json(:only => [ :first_name, :last_name, :email, :job_title, :bio, :address, :home_phone, :mobile_phone, :nmls_id ] )
+      user = User.select(mlo_details_params).find_by( :subdomain => subdomain )
 			if user.nil?
         render json: { message: "user not found"}, status: :unprocessable_entity
         return
 			end
-
-      render json: user
+      mlo_data = user.as_json
+      mlo_data["url"] = user.photo.url
+      render json: mlo_data
       return 
 		end
 
