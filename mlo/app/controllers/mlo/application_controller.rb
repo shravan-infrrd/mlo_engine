@@ -1,2 +1,2 @@
-module Mlo::ApplicationController < ::ApplicationController
+class Mlo::ApplicationController < ::ApplicationController
 end
