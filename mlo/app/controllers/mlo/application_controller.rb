@@ -1,5 +1,2 @@
-module Mlo
-  class ApplicationController < ActionController::Base
-    protect_from_forgery with: :exception
-  end
+module Mlo::ApplicationController < ::ApplicationController
 end

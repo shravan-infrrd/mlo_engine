@@ -4,19 +4,20 @@ module Mlo
   class UsersController < ApplicationController
 
 
-    def index
+    def index1
       @users = User.all
     end
 
 
-    def search
-      # binding.pry
+    def index
       @users = User
-#      @users = @users.joined_with_account
-      @users = find_officer_loan(@users)
-      render :index
-#    Rails.logger.warn "===>#{@users.inspect}"
-#    render json: @users.as_json
+  
+      if params.has_key?"term"
+        @users = params[:term].present? ? find_officer_loan(@users) : User.all
+      else
+        @users = User.all
+      end
+
     end
  
     def find_officer_loan(users)
