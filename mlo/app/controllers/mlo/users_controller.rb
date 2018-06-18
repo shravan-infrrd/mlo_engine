@@ -9,7 +9,7 @@ module Mlo
 #      @users = @users.joined_with_account
       @users = find_officer_loan(@users)
     Rails.logger.warn "===>#{@users.inspect}"
-    render json: @users.as_json
+#    render json: @users.as_json
     end
  
     def find_officer_loan(users)

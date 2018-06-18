@@ -1,0 +1,92 @@
+:css
+  .ui-autocomplete {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: default;
+    /*min-height: 200%;*/
+    overflow: auto;
+    z-index: 100;
+    border: 1px solid #eeeeee;
+    border-radius: 4px;
+    background-color: #ffff;
+    box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.4);
+  }
+  a:not([href]):not([tabindex]) {
+    color: inherit;
+    text-decoration: none;
+    color: #1c1c1c;
+    font-weight: 400;
+  }
+  .ui-state-active,
+  .ui-state-focus {
+    color: #1c1c1c;
+    background-color: #eeeeee;
+  }
+  .ui-menu .ui-menu-item {
+    position: relative;
+    margin: 0;
+    padding: 15px;
+    cursor: pointer;
+    min-height: 0;
+    list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
+    color: #1c1c1c;
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+:javascript
+  $(function() {
+   $('#assign_search_field').autocomplete({
+    minLength: 3,
+    source: '/users/find',
+    sortResults: true,
+    focus: function(event, ui) {
+        // $('#assign_search_field').val(ui.item.first_name + ' ' + ui.item.last_name);
+        return false;
+    },
+    select: function(event, ui) {
+        var full_name = ui.item.first_name + ' ' + ui.item.last_name
+        $('#assign_search_field').val(full_name);
+
+        $('#test').submit();
+        // var ids = $('#assignable_ids').val()
+        // $('#assignable_ids').val(ui.item.id + ',' + ids);
+        // $('.assign-to').append( $("<span class='label'>").text(full_name) );
+        // $('#assign_search_field').val('');
+        // $('#grant_access').removeClass('disabled');
+        // $('.solo-check').show();
+        //$.R.ModalHooks.handleContentUpdate.call($('#assign_loan_modal'));
+        return false;
+      }
+    }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+      return $( "<li></li>" )
+        .data( "item.autocomplete", item )
+        .append((item.zipcode) ? $("<a>").text(item.zipcode + ',') : $("<a>").text(' '),
+        $("<a>").text(item.first_name + ' ' + item.last_name + ',' + item.city_name + ',' + item.county_name) )
+        .appendTo( ul );
+    };
+
+    $('#assign_search_field').autocomplete("option", "appendTo");
+
+  })
+
+.c-mlo-search
+  .c-mlo-search__header
+    %h1 Search
+  .c-mlo-search__sub-heading Find a mortgage loan officer in your area.
+  .c-mlo-search__search-wrap
+    .c-mlo-search__search-info Enter city, county, zip or loan officer name
+    .c-search
+      = form_for users_find_officer_path, :method => 'get', html: {id: 'test'} do
+        %input.c-search__input#assign_search_field{ type: 'text', name: 'term'}
+        %i.c-search__icon.td-icon.td-icon-search
+
+-#= form_for users_find_officer_path, :method => 'get' do
+-#  = text_field_tag :assign_search_field, params[:term]
+-#  = submit_tag "Search", :name => nil
+
+#index_table
+  = render "render_mlo"
+
+
