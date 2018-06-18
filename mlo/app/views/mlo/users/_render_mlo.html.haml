@@ -1,0 +1,20 @@
+.c-mlo-search
+  - @users.each do |user|
+    .c-mlo-search__list-wrap
+      %i.td-icon.td-icon-avatar.c-mlo-search__mlo-avatar
+      .c-mlo-search__details
+        .c-mlo-search__mlo-name
+          %h2.c-mlo-search__mlo-name
+            = user.first_name
+          .c-mlo-search__nmls.f-sm
+            = user.license_number
+        .c-mlo-search__mlo-info Body Copy - WeblySleek UI Semilight
+        .c-mlo-search__contact
+          %i.td-icon.td-icon-contactUs
+          %span.c-mlo-search__phone
+            = user.mobile_phone
+        .c-mlo-search__contact
+          %i.td-icon.td-icon-email
+          %span.c-mlo-search__email
+            = user.email
+      %i.td-icon.td-icon-arrowRight.c-mlo-search__arrow

@@ -39,7 +39,7 @@
   $(function() {
    $('#assign_search_field').autocomplete({
     minLength: 3,
-    source: '/users/find',
+    source: '/users',
     sortResults: true,
     focus: function(event, ui) {
         // $('#assign_search_field').val(ui.item.first_name + ' ' + ui.item.last_name);
@@ -78,7 +78,7 @@
   .c-mlo-search__search-wrap
     .c-mlo-search__search-info Enter city, county, zip or loan officer name
     .c-search
-      = form_for users_find_officer_path, :method => 'get', html: {id: 'test'} do
+      = form_for users_search_path, :method => 'get', html: {id: 'test'} do
         %input.c-search__input#assign_search_field{ type: 'text', name: 'term'}
         %i.c-search__icon.td-icon.td-icon-search
 

@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
 	s.add_development_dependency 'pg'
 	s.add_development_dependency 'paperclip'
   s.add_development_dependency 'shoulda-matchers'
+  s.add_development_dependency 'haml'
 	s.test_files = Dir["spec/**/*"]
 
 end

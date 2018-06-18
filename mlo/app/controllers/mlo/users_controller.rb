@@ -3,12 +3,19 @@ require_dependency "mlo/application_controller"
 module Mlo
   class UsersController < ApplicationController
 
+
     def index
+      @users = User.all
+    end
+
+
+    def search
       # binding.pry
       @users = User
 #      @users = @users.joined_with_account
       @users = find_officer_loan(@users)
-    Rails.logger.warn "===>#{@users.inspect}"
+      render :index
+#    Rails.logger.warn "===>#{@users.inspect}"
 #    render json: @users.as_json
     end
  
