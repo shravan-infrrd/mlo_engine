@@ -1,0 +1,30 @@
+#user_modal.message-container.modal.fade.hide
+  = form_with(url: main_app.account_leads_path(@account_id), id: 'borrower_referral_form') do
+    .modal-wrapper
+      .modal-header.dark
+        %button{ type: "button", class: "close", "data-dismiss" => "modal", "aria-hidden" => "true" } &times;
+        %h3 Let's get started...
+      .modal-body
+        .inputs
+          %h5 Name
+          %input{ type: 'text', placeholder: "First Name", name: 'lead[b_first_name]' }
+          %input{ type: 'text', placeholder: "Last Name", name: 'lead[b_last_name]' }
+          %h5 Zipcode
+          %input{ type: 'text', placeholder: "Zip", name: 'lead[subject_property_zip]' }
+          %h5 Phone
+          %input{ type: 'text', placeholder: "Phone Number", class: 'input-phone input-bg phone', name: 'lead[b_phone]' }
+          %input{ type: 'text', placeholder: "Phone Type", name: 'lead[phone_type]' }
+          %h5 Loan
+          %input{ type: 'text', placeholder: "Purpose of Loan", name: 'lead[reason_for_loan]' }
+          %input{ type: 'text', placeholder: "Amount of loan", name: 'lead[loan_amount]' }
+          %h5 Mailing Address
+          %input{ type: 'text', placeholder: "Mailing Address", name: 'lead[b_address_attributes]' }
+          %h5 Call Date
+          %input{ type: 'text', placeholder: "Date of Call", name: 'lead[call_back_date]' }
+          %input{ type: 'text', placeholder: "Time of Call", name: 'lead[call_back_time]' }
+          %h5 Email
+          %input{ type: 'text', placeholder: "Email", name: 'lead[b_email]' }
+          %h5 NMLS #
+          = text_field_tag :license_number, user.license_number,class: 'license_number', :readonly => true
+      .modal-footer
+        = submit_tag("Submit", class: "btn btn--primary")

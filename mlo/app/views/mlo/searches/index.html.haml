@@ -1,0 +1,36 @@
+:javascript
+  $(function() {
+    $(".user-link").on('click', function(e){
+      e.preventDefault();
+      $m = $(this)
+      $modal = $('#user_modal')
+      $.each($m.data('user'), function(key, value){
+        $modal.find('.'+ key).val(value ? value : '');
+      });
+    });
+  });
+
+
+#message_show= render 'mlo/searches/show_overlay', { user: User.new }
+
+%table.table.table-hover.dashboard-table
+  %thead
+    %h1 Mortgage Lending
+    = image_tag @users.photo.expiring_url, style: 'width: 200px; height: 200px;'
+  %tbody
+    %tr
+      %td Name:
+      %td= [@users.first_name.to_s, @users.last_name.to_s].join(' ')
+    %tr
+      %td NMLS ID:
+      %td= truncate(@users.license_number, length:23)
+    %tr
+      %td Mobile phone:
+      %td= truncate(@users.mobile_phone, length:23)
+    %tr
+      %td Email:
+      %td= truncate(@users.email, length:30)
+    %tr
+      %td{ style: 'width: 30%'}= button_to truncate("Schedule a Call", length:45), '#', { class: "user-link", data: { user: @users.to_scoped_hash, toggle: "modal", target: '#user_modal'} }
+
+-#= will_paginate @users, params: { anchor: 'users' }
