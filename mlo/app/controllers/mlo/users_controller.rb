@@ -2,7 +2,7 @@ require_dependency "mlo/application_controller"
 
 module Mlo
   class UsersController < ApplicationController
-#    skip_before_action :authenticate_user!, only: %i(index find show_mlo_results referral join branded_signin)
+    skip_before_action :authenticate_user!, only: %i(index find show_mlo_results referral join branded_signin)
 
 
     def index
@@ -27,7 +27,7 @@ module Mlo
                           "upper(first_name) || ' ' || upper(last_name) || ' ' || ci.zipcode || ' ' || upper(ci.city_name) || ' ' || upper(c.county_name) LIKE ?",
                          q, q, q, q, q, q)
       # users = User.search(params[:assign_search_field], users) if params[:assign_search_field]
-#      users = users.paginate(page: params[:page], per_page: 5)
+      users = users.paginate(page: params[:page], per_page: 5)
       Rails.logger.debug "======>#{users.inspect}"
       users
     end
@@ -49,6 +49,34 @@ module Mlo
       end
     end 
 
+    def find_loan(users)
+      q = "%#{params[:term]}%".upcase
+      users.joins('JOIN mlo_county_users m on m.user_id = users.id')
+          .joins('JOIN mlo_counties c on c.id = m.county_id')
+          .joins('JOIN mlo_cities ci on ci.county_id = c.id')
+          .joins('JOIN mlo_states s on s.id = c.state_id')
+          .select('first_name, last_name, ci.zipcode, ci.city_name, c.county_name, s.state_name')
+          .where('upper(first_name) LIKE ? OR ' \
+                 'upper(last_name) LIKE ? OR ' \
+                 'ci.zipcode = ? OR ' \
+                 "upper(first_name) || ' ' || upper(last_name) || ' ' || ci.zipcode LIKE ?",
+                 q, q, q, q) + users.joins('JOIN mlo_county_users m on m.user_id = users.id')
+                                    .joins('JOIN mlo_counties c on c.id = m.county_id')
+                                    .joins('JOIN mlo_cities ci on ci.county_id = c.id')
+                                    .joins('JOIN mlo_states s on s.id = c.state_id')
+                                    .select('first_name, last_name, ci.zipcode, ci.city_name, c.county_name, s.state_name')
+                                    .where('upper(ci.city_name) LIKE ? ' , q) + users.joins('JOIN mlo_county_users m on m.user_id = users.id')
+                                                                                     .joins('JOIN mlo_counties c on c.id = m.county_id')
+                                                                                     .joins('JOIN mlo_cities ci on ci.county_id = c.id')
+                                                                                     .joins('JOIN mlo_states s on s.id = c.state_id')
+                                                                                     .select('first_name, last_name, ci.zipcode, ci.city_name, c.county_name, s.state_name')
+                                                                                     .where('upper(c.county_name) LIKE ? ' , q) + users.joins('JOIN mlo_county_users m on m.user_id = users.id')
+                                                                                                                                         .joins('JOIN mlo_counties c on c.id = m.county_id')
+                                                                                                                                         .joins('JOIN mlo_cities ci on ci.county_id = c.id')
+                                                                                                                                         .joins('JOIN mlo_states s on s.id = c.state_id')
+                                                                                                                                         .select('first_name, last_name, ci.zipcode, ci.city_name, c.county_name, s.state_name')
+                                                                                                                                         .where('upper(s.state_name) LIKE ? ' , q)
+    end
 
   end
 end
