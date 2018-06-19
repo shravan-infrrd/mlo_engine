@@ -78,5 +78,11 @@ module Mlo
                                                                                                                                          .where('upper(s.state_name) LIKE ? ' , q)
     end
 
+
+    def is_number? string
+      true if Float(string) rescue false
+    end
+
+
   end
 end
