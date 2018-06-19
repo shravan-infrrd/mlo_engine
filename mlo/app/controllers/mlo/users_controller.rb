@@ -2,7 +2,7 @@ require_dependency "mlo/application_controller"
 
 module Mlo
   class UsersController < ApplicationController
-    skip_before_action :authenticate_user!, only: %i(index find show_mlo_results referral join branded_signin)
+#    skip_before_action :authenticate_user!, only: %i(index find show_mlo_results referral join branded_signin)
 
 
     def index
@@ -11,14 +11,14 @@ module Mlo
 
 
     def find_mlo_results
-      users = User.with_role(:lender)
+      users = User #.with_role(:lender)
       users = users.joined_with_account
       q = "%#{params[:term]}%".upcase
       puts "-----------here q"
       puts q
-      users = users.joins('JOIN mappings m on m.user_id = users.id')
-                  .joins('JOIN counties c on c.id = m.county_id')
-                  .joins('JOIN cities ci on ci.county_id = c.id')
+      users = users.joins('JOIN mlo_county_users m on m.user_id = users.id')
+                  .joins('JOIN mlo_counties c on c.id = m.county_id')
+                  .joins('JOIN mlo_cities ci on ci.county_id = c.id')
                   .where('upper(first_name) LIKE ? OR ' \
                           'upper(last_name) LIKE ? OR ' \
                           'ci.zipcode = ? OR ' \
@@ -27,7 +27,8 @@ module Mlo
                           "upper(first_name) || ' ' || upper(last_name) || ' ' || ci.zipcode || ' ' || upper(ci.city_name) || ' ' || upper(c.county_name) LIKE ?",
                          q, q, q, q, q, q)
       # users = User.search(params[:assign_search_field], users) if params[:assign_search_field]
-      users = users.paginate(page: params[:page], per_page: 5)
+#      users = users.paginate(page: params[:page], per_page: 5)
+      Rails.logger.debug "======>#{users.inspect}"
       users
     end
 
