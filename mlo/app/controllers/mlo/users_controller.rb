@@ -2,6 +2,7 @@ require_dependency "mlo/application_controller"
 
 module Mlo
   class UsersController < ApplicationController
+    skip_before_action :authenticate_user!, only: %i(index find show_mlo_results referral join branded_signin)
 
 
     def index

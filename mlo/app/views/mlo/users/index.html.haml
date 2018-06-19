@@ -79,7 +79,7 @@
   .c-mlo-search__search-wrap
     .c-mlo-search__search-info Enter city, county, zip or loan officer name
     .c-search
-      = form_for users_show_mlo_results_path, :method => 'get', html: {id: 'test',remote: true} do
+      = form_for mlo.users_show_mlo_results_path, :method => 'get', html: {id: 'test',remote: true} do
         %input.c-search__input#assign_search_field{ type: 'text', name: 'term'}
         .js--mlo-search-button.c-search__icon.td-icon.td-icon-search{name: 'term', data: {url: users_show_mlo_results_path}}
 
