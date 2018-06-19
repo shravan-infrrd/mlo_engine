@@ -32,6 +32,12 @@ module Mlo
       users
     end
 
+
+    def show_mlo_results
+      @users = find_mlo_results
+      render partial: 'render_mlo'
+    end
+
     def find
       users = User.all
       users = find_loan(users)
