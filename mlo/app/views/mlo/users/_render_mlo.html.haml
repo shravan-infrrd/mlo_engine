@@ -5,10 +5,11 @@
       .c-mlo-search__details
         .c-mlo-search__mlo-name
           %h2.c-mlo-search__mlo-name
-            = user.first_name
+            = user.name
           .c-mlo-search__nmls.f-sm
             = user.license_number
-        .c-mlo-search__mlo-info Body Copy - WeblySleek UI Semilight
+        .c-mlo-search__mlo-info
+          = user.address
         .c-mlo-search__contact
           %i.td-icon.td-icon-contactUs
           %span.c-mlo-search__phone

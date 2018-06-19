@@ -37,9 +37,11 @@
 
 :javascript
   $(function() {
+   $.R.MLO_SEARCH.init();
+
    $('#assign_search_field').autocomplete({
     minLength: 3,
-    source: '/users',
+    source: '/users/find',
     sortResults: true,
     focus: function(event, ui) {
         // $('#assign_search_field').val(ui.item.first_name + ' ' + ui.item.last_name);
@@ -48,7 +50,6 @@
     select: function(event, ui) {
         var full_name = ui.item.first_name + ' ' + ui.item.last_name
         $('#assign_search_field').val(full_name);
-
         $('#test').submit();
         // var ids = $('#assignable_ids').val()
         // $('#assignable_ids').val(ui.item.id + ',' + ids);
@@ -62,8 +63,8 @@
     }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
       return $( "<li></li>" )
         .data( "item.autocomplete", item )
-        .append((item.zipcode) ? $("<a>").text(item.zipcode + ',') : $("<a>").text(' '),
-        $("<a>").text(item.first_name + ' ' + item.last_name + ',' + item.city_name + ',' + item.county_name) )
+        .append((item.zipcode) ? $("<a>").text(item.zipcode + ', ') : $("<a>").text(' '),
+        $("<a>").text(item.first_name + ' ' + item.last_name + ', ' + item.city_name + ', ' + item.county_name + ', ' + item.state_name) )
         .appendTo( ul );
     };
 
@@ -78,15 +79,18 @@
   .c-mlo-search__search-wrap
     .c-mlo-search__search-info Enter city, county, zip or loan officer name
     .c-search
-      = form_for mlo.users_path, :method => 'get', html: {id: 'test'} do
+      = form_for users_show_mlo_results_path, :method => 'get', html: {id: 'test',remote: true} do
         %input.c-search__input#assign_search_field{ type: 'text', name: 'term'}
-        %i.c-search__icon.td-icon.td-icon-search
+        .js--mlo-search-button.c-search__icon.td-icon.td-icon-search{name: 'term', data: {url: users_show_mlo_results_path}}
+
+.js--mlo-search-container
+  = render 'show_mlo_results'
 
 -#= form_for users_find_officer_path, :method => 'get' do
 -#  = text_field_tag :assign_search_field, params[:term]
 -#  = submit_tag "Search", :name => nil
 
-#index_table
-  = render "render_mlo"
+-##index_table
+-#  = render "render_mlo"
 
 
