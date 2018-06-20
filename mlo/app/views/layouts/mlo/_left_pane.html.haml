@@ -1,0 +1,8 @@
+/ BEGIN layouts/_left_pane.html.haml
+= yield :left_pane
+
+- if @nav_list
+  %nav.c-nav{ class: "c-nav--light"}
+    = render("layouts/nav_group", nav_items: @nav_list)
+
+/ END layouts/_left_pane.html.haml

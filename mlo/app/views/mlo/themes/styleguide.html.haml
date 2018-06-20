@@ -1,0 +1,33 @@
+:scss
+  .example {
+    background-color: #f7f7f9;
+    padding: .2rem;
+    margin-bottom: 2rem;
+  }
+
+  .example__rendered {
+    background-color: #f7f7f9;
+    padding: 1rem;
+  }
+
+  .example__markup {
+    padding: 1rem;
+  }
+
+  .example__rendered--all .btn {
+    margin-bottom: 0.5rem;
+  }
+
+
+- content_for(:left_pane) do
+  %ul.nav.c-nav.c-nav--light{ id: "myTab", role: "tablist" }
+    - @components.each_with_index do |component, i|
+      %li.nav-item
+        %a.c-nav__link{ id: "layout-tab-#{i}", 'data-toggle': 'tab', href: "##{component}", role: 'tab', 'aria-controls': component, 'aria-selected': 'false', class: i == 0 ? 'active' : '' }
+          = component.capitalize
+.m-2
+  .tab-content{ id: 'myTabContent' }
+    - @components.each_with_index do |component, i|
+      .tab-pane.fade.show{ id: component, role: 'tabpanel', 'aria-labelledby': "#{component}-tab", class: i == 0 ? 'active' : '' }
+        .styleguide-section__nav
+          = render(partial: "themes/components/#{component}")

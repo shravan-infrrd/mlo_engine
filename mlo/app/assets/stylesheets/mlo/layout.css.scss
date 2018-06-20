@@ -1,0 +1,157 @@
+/* = = = = = = = = = = = = = = = = = = = =
+The BEM .l-application block should be used for layout purposes only.
+This includes displaying columns, adjusting their size and visibility.
+
+__row and sub elements (nav, primary and secondary) should not be
+used for visual styles beyond padding, margins and visiblity.
+ = = = = = = = = = = = = = = = = = = = =  */
+
+$footerHeight: 5rem;
+
+@mixin hide-col() {
+  flex: 0 0 0;
+  visibility: hidden;
+}
+
+.l-application-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  &__row--content {
+    flex-grow: 1;
+    position: relative;
+  }
+  &__row--header { height: $navbarHeightLarge; }
+  &__row--footer {
+    min-height: $footerHeight;
+    height: $footerHeight;
+    display: none;
+    flex-shrink: 0;
+    z-index: z('bottom-nav');
+  }
+
+  &__drawer {
+    position: absolute;
+    left: -19rem;
+    width: 19rem;
+    top: $navbarHeightLarge;
+    height: calc(100% - #{$navbarHeightLarge}) ;
+    transition: left .75s ease;
+
+    &.is-shown {
+      left: 0;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .l-application-container__row--footer { display: block; }
+  .l-application-container__row--header { height: $navbarHeightSmall; }
+  .l-application-container__drawer {
+    height: calc(100% - #{$navbarHeightSmall});
+    top: $navbarHeightSmall;
+  }
+}
+
+.l-application {
+  @include make-container();
+  height: 100%;
+  position: absolute;
+
+  &--layer {
+    position: absolute;
+    top: 0;
+  }
+
+  &__row {
+    height: 100%;
+    max-height: 100%;
+    @include make-row();
+  }
+
+  &__col {
+    height: 100%;
+    background-color: $white;
+  }
+
+  &__col--nav { @include make-col(2); }
+
+  &__col--primary {
+    // TODO: see if it's possible to use this
+    // flex-grow: 1;
+    @include make-col(10);
+    @include scrollable;
+    //padding: 0.875rem 2rem;
+  }
+
+  // &__col--secondary {
+  //   @include make-col(3);
+  //   @include scrollable;
+  // }
+
+  &--no-secondary-col {
+    .l-application__col--nav       { @include make-col(2); }
+    .l-application__col--primary   { @include make-col(10); }
+    .l-application__col--secondary { @include hide-col(); }
+  }
+
+  &--iframe, &--only-primary-col  {
+    .l-application__col--primary { @include make-col(12); }
+    .l-application__col--nav, .l-application__col--secondary { @include hide-col(); }
+  }
+
+  &--only-nav-col  {
+    .l-application__col--nav {
+      display: block;
+      @include make-col(12);
+    }
+
+    .l-application__col--primary, .l-application__col--secondary { @include hide-col(); }
+  }
+
+  &--only-secondary-col  {
+    .l-application__col--secondary {
+      display: block;
+      @include make-col(12);
+    }
+    .l-application__col--nav, .l-application__col--primary   { display: none; }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .l-application {
+    &__col--nav       { @include make-col(2); }
+    &__col--primary   { @include make-col(10); }
+    &__col--secondary { @include hide-col(); }
+  }
+}
+@include media-breakpoint-down(xl) {
+  .l-application {
+    &__col--nav       { @include make-col(2); }
+    &__col--primary   { @include make-col(10); }
+    &__col--secondary { @include hide-col(); }
+  }
+}
+@include media-breakpoint-up(xl) {
+  .l-application {
+    &__col--nav       { @include make-col(2);  }
+    &__col--primary   { @include make-col(10); }
+    &__col--secondary { @include hide-col(); }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .l-application {
+    &__col--nav         { display: none; }
+    &__col--primary     { @include make-col(12); }
+    &__col--secondary   { @include hide-col(); }
+  }
+}
+// @include media-breakpoint-up(md) {
+//   .l-application {
+//     // &__col--nav         { display: none; }
+//     &__col--primary     { width: 668px; }
+//     &__col--secondary   { @include hide-col(); }
+//   }
+// }

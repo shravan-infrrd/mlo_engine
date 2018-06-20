@@ -1,0 +1,154 @@
+//
+// Colors
+// --------------------------------------------------
+$cod-gray:              #1c1c1c;
+$white:                 #ffffff;
+$boulder:               #767676;
+$tasman:                #D8E4D7;
+$milk-punch:            #FFF8D7;
+$pot-pourri:            #F7E8E9;
+$orange-roughy:         #C55415;
+$green-pea:             #1A5336;
+$japanese-laurel:       #008A00;
+$boulder-approx:        #797979;
+$snow-drift:            #F4F7F4;
+$whisper:               #f3f3f8;
+$silver:                #cccccc;
+$japanese-laurel-1:     #038203;
+$narvik:                #f7fcf8;
+$narvik-approx:         #ebf8ee;
+
+
+$alto:                 #D3D3D3;
+$battleship-grey:      #62767E;
+$battleship-grey50:    rgba(98,118,126,0.5);
+
+$black:                #000000;
+$black-90:             rgba(0, 0, 0, 0.9);
+$black-80:             rgba(0, 0, 0, 0.8);
+$black-70:             rgba(0, 0, 0, 0.7);
+$black-60:             rgba(0, 0, 0, 0.6);
+$black-50:             rgba(0, 0, 0, 0.5);
+$black-40:             rgba(0, 0, 0, 0.4);
+$black-30:             rgba(0, 0, 0, 0.3);
+$black-20:             rgba(0, 0, 0, 0.2);
+$black-10:             rgba(0, 0, 0, 0.1);
+$gray:                 #808080;
+$mercurye:             #e5e5e5;
+$brownish-grey:        #666666;
+$gallery:              #F0F0F0;
+$gainsboro:            #DBDBDB;
+$gun-metal:            #505a5e;
+$light-grey:           #CACACA;
+$light-navy:           #156f96;
+$light-navy-50:        rgba(21, 111, 150, 0.5);
+$mercury:              #e7e7e7;
+$narna:                #272727;
+$shady:                #969696;
+$slate:                #7B9098;
+$slate50:              rgba(123,144,152,0.5);
+$sliver:               #B7B7B7;
+$suva:                 #8F8F8F;
+$tundora:              #444444;
+$warm-grey:            #767676;
+$white:                #FFFFFF;
+$white-off:            #EDEDED;
+$white-smoke:          #F6F6F6;
+$boulder-gray:         #757575;
+$cornflower-blue:      #5C5C5C; // this is not a blue, is this correct hex?
+$early-dawn:           #fffaeb;
+$vermilion:            #ff4100;
+$moss-green:           #5d9d3c;
+$dark-sky-blue:        #4a90e2;
+$pumpkin:              #e08709;
+$light-grey-green:     #dff0d8;
+$duck-egg-blue:        #ecf3fc;
+$rose:                 #f8e0e0;
+$dull-orange:          #d77136;
+$beige:                #faefe8;
+$corn-silk:            #fcf8e3;
+$wet-asphalt:   #34495E;
+
+
+//
+// Deprecated Colors
+// --------------------------------------------------
+
+$turquoise:     #1ABC9C;
+$emerald:       #2ECC71;
+$peter-river:   #3498DB;
+$midnight-blue: #2C3E50;
+$carrot:        #E67E22;
+$alizarin:      #E74C3C; /* neon orange-red */
+$clouds:        #ECF0F1;
+$silver:        #BDC3C7;
+$concrete:      #95A5A6;
+$asbestos:      #7F8C8D;
+$input-border:  #DCE4EC;
+$nav-blue:      #2e3e51;
+$main-purple:   #342d47;
+$app-purple:    lighten($main-purple, 6%);
+$landing-red:   #dd4952;
+$action-green:  #7cb385;
+$subtle-yellow: #eadfa2;
+$barely-purple: #F7F3F7; /* This color is gray with a slight hint or purple */
+$roostify-gray: rgb(166, 166, 166);
+$soft-peach:    #f2dede; /* alert background */
+$readable-gray: #717171; /* A suitably contrast-y gray on white */
+$grayDarker:            #222 !default;
+$grayDark:              #333 !default;
+$gray:                  #555 !default;
+$grayLight:             #767676 !default;
+$grayLighter:           #eee !default;
+$blueLight:             #d4d9df !default;
+$blue:                  #049cdb !default;
+$blueDark:              #0064cd !default;
+$green:                 #46a546 !default;
+$red:                   #9d261d !default;
+$yellow:                #ffc40d !default;
+$pink:                  #c3325f !default;
+$purple:                #7a43b6 !default;
+$alabaster:         #fafafa;
+$alto:              #d3d3d3;
+$bahama-blue:       #006699;
+$blue-lagoon:       #008B92;
+$boulder-gray:      #757575;
+$dark-boulder-gray: #767676;
+$dove-gray:         #656565;
+$light-dove-gray:   #666666;
+$matisse:           #156F96;
+$mystic:            #DEE4EB;
+$nobel:             #b7b7b7;
+$pickled-bluewood:  #2E3E51;
+$persimmon:         #FF5C5C;
+$rock-spray:        #BD2B08;
+$gallery:           #f0f0f0;
+$reddamask:         #d77136;
+$middleGray:        #8f8f8f;
+$wildsand:          #f6f6f6;
+$guardsman-red:     #cb1000;
+$mercury:           #e4e4e4;
+$pastel-green:      #5ce47d;
+$light-slate-blue:  #7B7BF8;
+$laser-lemon:       #FFFF77;
+$golden-tainoi:     #FDC857;
+$cardinal:          #D32525;
+$beige:             #f9ece2;
+
+//
+// Variables
+// TODO: move these into their own file after redesign/color audit
+// --------------------------------------------------
+$header-text-light:  $boulder-gray;
+$header-text-medium: $light-dove-gray;
+$alert-text:         $dove-gray;
+$nav-selected-bg:    $mystic;
+$nav-text:           $pickled-bluewood;
+$nav-hover:          $matisse;
+$nav-background:     $white;
+$nav-header:         $pickled-bluewood;
+$summary-header:     $pickled-bluewood;
+$link-text:          $bahama-blue;
+$input-placeholder:  $dark-boulder-gray;
+$form-validation-border: $persimmon;
+$form-validation-text:   $rock-spray;

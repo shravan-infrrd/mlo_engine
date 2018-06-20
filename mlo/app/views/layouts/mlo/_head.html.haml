@@ -1,0 +1,56 @@
+/ BEGIN layouts/_head.html.haml
+
+%head
+  %meta{ "http-equiv" => "X-UA-Compatible", "content" => "IE=9; IE=10; IE=11; IE=edge;" }
+  %meta{ charset: "utf-8" }
+  = render "layouts/title_and_favicon"
+  %meta{ name: "viewport", content: "width=device-width, initial-scale=1" }
+  %meta{ name: "apple-mobile-web-app-capable", content: "yes" }
+  - if Settings::Global.segment.token
+    %meta{ name: 'segment', content: Settings::Global.segment.token }
+
+
+  = stylesheet_link_tag("application")
+  %link{ rel: "stylesheet", type: "text/css", href: "https://s3-us-west-1.amazonaws.com/roostifystatic/static/fontawesome/font-awesome-3.2.1.2.css", integrity: "sha256-OJhS4EJ5d0UYQABlnRs+TiQzTQKd3rouTsva6wh0tqA= sha384-i/aDOk+k0Mr3wJHaosXmeXfAix69GFmH9QsIQqrQZbUuraPwtWAmXpGUS771kBMs sha512-Hxv+0t5MIjkfYsEp0iB4HD1ohOjuTlSElCGoukmsxY3kEUZGKduZPPgO5EuaRma4tmsQ8k80uaXcxfJdizazMA==",  crossorigin: "anonymous"}
+
+  - unset_consumed_session_variables
+  = include_gon(namespace: "RoostifyVariables", init: true)
+
+  = javascript_include_tag("application")
+
+  - if vue_ui_enabled?
+    = stylesheet_link_tag external_asset_path(source: :roostify_ui, extension: :css)
+    - if override_style?(:client_chase)
+      = stylesheet_link_tag external_asset_path(source: :client_chase, chunk_name: 'theme', extension: :css)
+    - else
+      = stylesheet_link_tag external_asset_path(source: :roostify_ui, chunk_name: 'theme', extension: :css)
+
+  - if override_style?(:client_chase)
+    = stylesheet_link_tag 'client-chase'
+    = stylesheet_link_tag external_asset_path(source: :client_chase, extension: :css)
+
+  = csrf_meta_tag
+
+  = yield :social_meta_tags
+
+  %noscript
+    %meta{content: "3; url=https://www.roostify.com/javascript_off", "http-equiv" => "refresh"}
+
+  - if user_signed_in?
+    :javascript
+      $(function() { $.Roostify.initialize(); });
+
+  - if Rails.env == 'test'
+    / Allows modals with .fade to work
+    :css
+      .modal.fade, .fade {
+        -webkit-transition: opacity 0.01s;
+        -moz-transition: opacity 0.01s;
+        -ms-transition: opacity 0.01s;
+        -o-transition: opacity 0.01s;
+        transition: opacity 0.01s;
+      }
+
+
+
+/ END layouts/_head.html.haml

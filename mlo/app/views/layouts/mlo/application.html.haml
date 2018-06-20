@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Mlo
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .l-application-container
+      .l-application-container__row.l-application-container__row--content
+        .l-application{ class: "#{'l-application--iframe' if iframe? }", id: "#{params[:controller]}_content" }
+          .l-application__row
+            .l-application__col.l-application__col--nav.js-application__col--nav
+              = render("layouts/left_pane")
+            .l-application__col.l-application__col--primary.js-application__content
+              #content= yield

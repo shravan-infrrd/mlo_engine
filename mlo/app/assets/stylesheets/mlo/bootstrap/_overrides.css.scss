@@ -1,0 +1,231 @@
+//
+// Bootstrap and Overrides
+// --------------------------------------------------
+
+// Mobile overrides
+
+@media only screen and (max-width: 767px) {
+  .btn-group {
+    white-space: inherit;
+  }
+  .btn-group > .btn {
+    margin-bottom: 10px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .form-horizontal .controls { margin-left: 0 !important; }
+}
+
+/* Glyphicon overwrite*/
+[class^="icon-"],
+[class*=" icon-"] {
+  margin-right: .3em;
+}
+
+.label-blue {
+  background-color: #0a4386;
+}
+
+.label-red,
+.label-important {
+  background-color: #bf2155;
+}
+
+.label-success {
+  color: $action-green;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.security-banner {
+
+  .thawte-seal {
+    display: inline-block;
+    margin: 0 auto;
+
+    img {
+      height: 20px;
+    }
+  }
+
+  .amazon-seal {
+    display: inline-block;
+    background-color: #FFFFFF;
+    padding: 5px;
+    width: 75px;
+    border-radius: 3px;
+
+    img {
+      height: 40px;
+    }
+  }
+}
+
+input:focus:invalid:focus,
+input[type="checkbox"] { margin: 0; }
+textarea:focus:invalid:focus,
+select:focus:invalid:focus {
+  border-color: lighten($main-purple, 35%);
+  -webkit-box-shadow: 0 0 6px lighten($main-purple, 55%);
+  -moz-box-shadow: 0 0 6px lighten($main-purple, 55%);
+  box-shadow: 0 0 6px lighten($main-purple, 55%);
+}
+
+a:focus {
+  outline: 5px auto lighten($main-purple, 45%);
+}
+
+.navbar .nav > li > a:focus, .navbar .nav > li > a:hover { outline: 0; }
+
+// .upload-box .dropdown-menu > li a:hover { background-color: transparent; }
+// .upload-box .dropdown-menu > li a:focus { background-color: transparent; }
+.dropdown-menu > li:hover,
+.dropdown-menu > li > a:focus,
+
+.form-horizontal .control-label { cursor: default; }
+.form-horizontal .control-group .controls input[type="checkbox"] { margin-top: 8px; }
+.form-horizontal .help-tip { display: inline; margin-left: 6px; }
+.form-horizontal .help-tip a { cursor: default; }
+.form-horizontal .help-tip img { height: 16px; width: 16px; opacity: 0.8; }
+
+.modal {
+  li {
+    margin: 5px 0;
+    font-size: 13px;
+  }
+  h5 {
+    font-weight: bold;
+
+    ul {
+      font-weight: normal;
+    }
+  }
+}
+
+// Tooltips
+
+.tooltip {
+  .tooltip-inner {
+    background: $app-purple;
+    padding: 6px 12px;
+    width: auto;
+    font-size: 11px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+  }
+  &.top .tooltip-arrow {
+    border-top-color: $app-purple;
+  }
+}
+.tooltip.top { border-bottom: none; }
+
+
+// Slide transitions on tabs
+
+.tab-content {
+  margin-bottom: 4em;
+  overflow:hidden;
+}
+
+.slide-left {
+  -webkit-transition: left 0.25s ease;
+  -moz-transition: left 0.25s ease;
+  -ms-transition: left 0.25s ease;
+  -o-transition: left 0.25s ease;
+  transition: left 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  left:100%;
+}
+.slide-left.in {
+    left:0;
+}
+.slide-left.out{
+    left:-100%;
+}
+.slide-right {
+  -webkit-transition: left 0.25s ease;
+  -moz-transition: left 0.25s ease;
+  -ms-transition: left 0.25s ease;
+  -o-transition: left 0.25s ease;
+  transition: left 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  left:-100%;
+}
+.slide-right.in {
+    left:0;
+}
+.slide-right.out{
+    left:100%;
+}
+
+// Accessibility
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.close {
+  color: $grayLight;
+  opacity: 1;
+  &:hover {
+    color: $grayDark;
+    opacity: 1;
+  }
+}
+
+//
+// Button Group Overrides
+// Adds 2px spacing between buttons
+//
+
+
+// Button Group Variables
+// TODO couldn't put this in variables for some reason
+// variable was sometimes not there
+$btn-group-gap-width: 1px;
+
+.btn-group > .btn:not(:first-child):not(.dropdown-toggle) {
+  margin-left: $btn-group-gap-width;
+}
+
+
+// Card Modifiers
+.card__dark {
+  background-color: whitesmoke;
+  border: 1px solid #ccc;
+  margin-bottom: 100px;
+  text-align: center;
+  box-shadow: inset 0px -2px 2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0px -2px 2px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 0px -2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.card__narrow {
+  max-width: 406px;
+}
+
+.form-control-lg {
+  font-size: .9375rem; // 15px
+}
+
+// Bootstrap 4 depricated alert-error, however we dymanically set alert-{type} from rails flash[:type]
+// Setting .alert-error allows dynamic alert code to display properly
+.alert-error {
+  @include alert-variant($errorBackground, $errorBackground, $errorText);
+}
+
+.alert-alert {
+  @include alert-variant($infoBackground, $infoBackground, $infoText);
+}

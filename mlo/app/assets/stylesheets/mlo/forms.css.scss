@@ -1,0 +1,370 @@
+//
+// Forms
+// --------------------------------------------------
+
+textarea.address {
+  height: 60px;
+  resize: none;
+}
+
+input[type="text"].center-aligned-input {
+  height: 25px;
+  display: inline-block;
+  margin: 0;
+  font-size: 20px;
+  width: 300px;
+  text-align: center;
+
+  &.small {
+    height: 20px;
+    font-size: 14px;
+  }
+}
+
+input[type="checkbox"] + label {
+  display: inline;
+  font-size: 12px;
+}
+
+.solo-check {
+  display: inline-block;
+  border-radius: 4px;
+  float: right;
+  padding: 0 10px;
+  background: rgb(216, 218, 223);
+
+  .control-label {
+    width: auto;
+    font-size: 11px;
+    font-weight: bold;
+    display: inline;
+  }
+
+  .controls {
+    float: right;
+    margin-left: 10px;
+    display: inline;
+  }
+}
+
+.controls {
+  textarea {
+    height: 10em;
+  }
+}
+
+#encompass_export_modal {
+  .control-group {
+    margin-bottom: 10px;
+  }
+}
+
+.form-sub-header {
+  clear: both;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+// Changes saved notification
+.ajax-notification {
+  // The display is toggled based on whether a form was successfully submitted
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 14%;
+  border-radius: 8px;
+  background: rgba(22, 200, 92, 0.72);
+  width: 400px;
+  margin-left: -200px;
+  z-index: 99999999999;
+
+  &.changes-saved-notification {
+    background: rgba(22, 200, 92, 0.72);
+    padding-top: 24.5px;
+    padding-bottom: 24.5px;
+    text-align: center;
+  }
+
+  &.document-uploaded-notification {
+    background: rgba(22, 200, 92, 0.72);
+    padding-top: 24.5px;
+    padding-bottom: 24.5px;
+    text-align: center;
+  }
+
+  &.error-notification {
+    background: rgba(200, 22, 22, 0.72);
+    padding: 24.5px;
+    text-align: center;
+  }
+
+  &.long-load-notification {
+    background: rgba(219, 158, 0, 0.72);
+    padding-top: 18.375px;
+    padding-bottom: 18.375px;
+    text-align: center;
+
+    &.ajax-notification--text {
+      line-height: 30px;
+    }
+  }
+
+  &.ajax-notification--text {
+    font-family: "HelveticaNeue-Medium";
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: normal;
+    color: #000;
+    text-align: center;
+  }
+}
+
+// Autocomplete loading
+.ui-autocomplete-loading {
+  background: url("/assets/spinner.gif") no-repeat right center;
+}
+
+// Loan Application loading
+.loan-application-loading {
+  margin: 4px 10px 0 0;
+  display: none;
+  float: right;
+
+  img {
+    height: 25px;
+    width: 25px;
+  }
+}
+
+// Status update posting text-area
+.status_update_text_area {
+  width: 100%;
+  display: block;
+  padding: 9px;
+  border: 1px solid #dcdcdc;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  resize: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.field_with_errors {
+  textarea,
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="url"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="color"],
+  .uneditable-input {
+    border-color: $form-validation-border;
+    margin-bottom: 0;
+  }
+
+  .message {
+    margin: 0 auto;
+    text-align: left;
+    color: $form-validation-text;
+  }
+}
+
+input {
+  @extend .form-control;
+  height: 2.5rem;
+  border: 0.0625rem solid #cccccc;
+  letter-spacing: -0.2px;
+  border-radius: 0.25rem;
+  padding-left: 1rem;
+  font-weight: 400;
+  padding: 0.75rem;
+  color: $tundora;
+  font-size: 20px;
+  font-family: 'WeblySleek UI Semilight';
+  &::placeholder {
+    color: $shady;
+    font-weight: normal;
+    font-family: Roboto;
+  }
+}
+
+.c-textarea {
+  @extend .form-control;
+  height: 2.5rem;
+  border: 0.125rem solid $gainsboro;
+  letter-spacing: -0.2px;
+  border-radius: 0.25rem;
+  padding-left: 1rem;
+  font-family: 'WeblySleek UI Semilight';
+  font-weight: 400;
+  color: $tundora;
+
+  &::placeholder {
+    color: $shady;
+    font-weight: normal;
+    font-family: 'WeblySleek UI Semilight';
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: 0;
+  color: $warm-grey;
+}
+
+.c-search {
+  position: relative;
+  height: 2.5rem;
+  &__input {
+    padding-right: 2rem;
+  }
+  &__icon {
+    position: absolute;
+    right: 15px;
+    top: 0.5rem;
+    color: #038203 !important;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}
+.plaintext-field {
+  font-size: 16px;
+  padding-top: 5px;
+}
+
+.c-checkbox {
+  @extend .d-inline-flex;
+  &__icon {
+    position: relative;
+    top: 0.125rem;
+    color: $gun-metal;
+    font-size: 1.25rem;
+    &--unchecked {
+      color: $gainsboro;
+    }
+  }
+  &__label {
+    padding-left: 0.5rem;
+    margin-bottom: 0;
+  }
+}
+
+.c-label-field {
+  &__input {
+    padding: 0 .75rem;
+    border-radius: 0 0.125rem 0.125rem 0;
+    &--currency{
+      padding: 0 0.5rem;
+    }
+  }
+  &__icon {
+    @extend .d-flex;
+    @extend .justify-content-center;
+    position: relative;
+    align-items: center;
+    width: 2rem;
+    border: 0.125rem solid $gainsboro;
+    border-right: 0;
+    border-radius: 0.125rem 0 0 0.125rem;
+    background-color: $gallery;
+    color: $warm-grey;
+  }
+}
+
+.c-inline-form {
+  @extend .d-flex;
+  @extend .align-items-start;
+  &__reply-input{
+    margin-right: 0.625rem;
+  }
+}
+.c-inline-item {
+  &.is-hidden {
+    @extend .d-none;
+  }
+  &__edit-icon {
+    margin-left: 0.25rem;
+    color: $light-navy;
+    font-size: 1.125rem;
+  }
+}
+.c-inline-edit {
+  @include l-vr-2();
+  &.is-shown {
+    @extend .d-block;
+  }
+  &__wrap{
+    @include l-vrt-2();
+  }
+}
+
+.l-dropdown {
+  &__toggle {
+    width: 100%;
+    background-color: $white;
+    border: solid 0.125rem $gainsboro;
+    font-weight: normal;
+    color: $warm-grey;
+    line-height: 1.13;
+    padding: 0.5rem 0.75rem;
+    @extend .d-flex;
+    @extend .justify-content-between;
+    @extend .mb-0;
+    &:after {
+      content: none;
+    }
+    &:hover {
+      background-color: $white;
+      color: $warm-grey;
+      border-color: $gainsboro;
+    }
+    &:focus {
+      box-shadow: none;
+    }
+    &:active {
+      box-shadow: none;
+      color: $warm-grey;
+      background-color: $white;
+    }
+  }
+  &__icon {
+    font-size: 1.25rem;
+    color: $brownish-grey;
+  }
+  &__menu {
+    width: 100%;
+    padding: 0;
+    margin-top: .125rem;
+  }
+  &__item {
+    min-height: 2.5rem;
+    padding: 0.5rem 0.875rem;
+    color: $tundora;
+    &:hover {
+      background-image: linear-gradient($gallery, $gallery);
+    }
+    &.selected {
+      background-image: linear-gradient($light-navy, $light-navy);
+      color: $white;
+    }
+  }
+}
+
+select {
+  font-family: 'WeblySleek UI Semilight';
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+}

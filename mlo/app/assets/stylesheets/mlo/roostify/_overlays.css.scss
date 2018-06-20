@@ -1,0 +1,30 @@
+.c-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  height: 0;
+  width: 100%;
+
+  // We want the visibility to fade out with the background-color
+  transition: height 0s ease .75s, visibility 0s ease .75s, background-color .75s ease;
+  background-color: none;
+
+  &.is-shown {
+    // We want the visibility to snap in right away when is-shown
+    transition: height 0s, visibility 0s, background-color .75s ease;
+    visibility: visible;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.3);
+  }
+
+  &--primary-nav { z-index: z('left-nav')-1; }
+  &--secondary-nav { z-index: z('chat')-1; }
+}
+
+
+// We do not want the secondary-nav overlay to show when above XL
+// as the chat goes back into the layout.
+@include media-breakpoint-up(xl) {
+  .c-overlay--secondary-nav { display: none; }
+}

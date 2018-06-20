@@ -1,0 +1,110 @@
+%h1 Buttons
+%hr
+
+.col-4.btn.btn--primary Button
+.col-4.btn.btn--secondary-clear Button
+-# %h2 Default
+-# .example
+-#   .example__rendered.example__rendered--all
+-#     - button_modifiers.each do |modifier|
+-#       .btn{class: "btn--#{modifier}"}= modifier.capitalize
+
+-# %h2 Small
+-# .example
+-#   .example__rendered.example__rendered--all
+-#     - button_modifiers.each do |modifier|
+-#       .btn{class: "btn--#{modifier} btn--sm"}= modifier.capitalize
+
+-# %h2 Extra Small
+-# .example
+-#   .example__rendered.example__rendered--all
+-#     - button_modifiers.each do |modifier|
+-#       .btn{class: "btn--#{modifier} btn--xs"}
+-#         .fa.fa-bath
+
+-# %h2 Circle
+-# .example
+-#   .example__rendered.example__rendered--all
+-#     - button_modifiers.each do |modifier|
+-#       .btn{class: "btn--#{modifier} btn--xs btn--circle"}
+-#         .fa.fa-bath
+
+-# %h2 Markup
+-# .example
+-#   .example__markup
+-#     - button_modifiers.each do |modifier|
+-#       == .btn.btn--#{modifier} #{modifier.capitalize}
+-#       %br
+-#     == .btn.btn--sm Small
+-#     %br
+-#     == .btn.btn--xs Extra Small
+
+-# %h1 Button States
+-# %hr
+-# - button_modifiers.each do |modifier|
+-#   %h2 Button #{modifier.capitalize}
+-#   .example
+-#     .example__rendered
+-#       .btn{class: "btn--#{modifier}"} Base
+-#       .btn.active{class: "btn--#{modifier}"} Active
+-#       .btn.hover{class: "btn--#{modifier}"} Hover
+-#       .btn.focus{class: "btn--#{modifier}"} Focus
+-#       .btn.disabled{class: "btn--#{modifier}"} Disabled
+
+-# %h1 Button Groups
+-# %p Group a series of buttons together on a single line with the button group.
+-# %hr
+-# %h2 Button Group
+-# .example
+-#   .example__rendered.example__rendered--all
+-#     .btn-group
+-#       .btn.active Yes
+-#       .btn No
+
+-#     %br
+
+-#     .btn-group
+-#       .btn.btn--muted.active
+-#         .fa.fa-bath
+-#       .btn.btn--muted
+-#         .fa.fa-plane
+
+-#     %br
+
+-#     .btn-group
+-#       .btn Left
+-#       .btn.active Active
+-#       .btn.hover Hover
+-#       .btn Middle
+-#       .btn.focus Focus
+-#       .btn.disabled Disabled
+-#       .btn Right
+-# %h2 Markup
+-# .example
+-#   .example__markup
+-#     == .btn-group
+-#     %br
+-#     == &nbsp;&nbsp;.btn Left
+-#     %br
+-#     ==   &nbsp;&nbsp;.btn Middle
+-#     %br
+-#     ==   &nbsp;&nbsp;.btn Right
+
+-# %h2 Button Group Vertical
+-# .example
+-#   .example__rendered.example__rendered--all
+-#     .btn-group-vertical
+-#       .btn Top
+-#       .btn Middle
+-#       .btn Bottom
+
+-# %h2 Markup
+-# .example
+-#   .example__markup
+-#     == .btn-group-vertical
+-#     %br
+-#     == &nbsp;&nbsp;.btn Left
+-#     %br
+-#     ==   &nbsp;&nbsp;.btn Middle
+-#     %br
+-#     ==   &nbsp;&nbsp;.btn Right

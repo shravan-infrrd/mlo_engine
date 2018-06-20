@@ -10,5 +10,19 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery-fileupload
 //= require rails-ujs
+//= require jquery-ui
+//= require jquery.validate
+// require rails.validations
 //= require_tree .
+//= require rails-timeago
+//= require_self
+//= require jquery-ui/resizable
+//= require jquery.cookie
+//= require jquery.knob
+//= require jquery-ui/autocomplete
+//= require jquery.placeholder
+//= require jquery.bigtext
+//= require bootstrap

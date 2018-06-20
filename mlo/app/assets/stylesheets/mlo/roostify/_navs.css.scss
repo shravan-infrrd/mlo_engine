@@ -1,0 +1,322 @@
+.c-nav {
+  @extend .nav;
+  @extend .pb-4;
+  @extend .flex-column;
+
+  flex-wrap: nowrap;
+  height: 100%;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__section {
+    display: block;
+    padding: 0.5rem 1rem;
+    height: $navLinkHeight;
+  }
+
+  // TODO rework this
+  &__sublist {
+    .c-nav__link {
+      @extend .pl-4;
+    }
+  }
+
+  &__icon {
+    @extend .mr-1;
+    text-align: center;
+    width: 1rem;
+    &--sm {
+      font-size: .5rem;
+    }
+  }
+
+  &__section {
+    color: $navSectionColor;
+    display: block;
+    height: $navLinkHeight;
+    padding: 0.5rem 1rem;
+  }
+
+  &__item {
+    @extend .nav-item;
+  }
+
+  &__link {
+    @extend .nav-link;
+    border-left: 0.375rem solid transparent;
+    height: $navLinkHeight;
+    width: 100%;
+
+    &--small {
+      display: block;
+      font-size: .75rem;
+      height: $navLinkHeight/2;
+      padding: 0 1rem;
+    }
+
+    &--collapse {
+      @extend .text-truncate;
+    }
+
+    // TODO Look into this
+    &--collapsable {
+      &:hover {
+        background: none;
+      }
+      &.active {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.c-nav--light {
+  background: $navBackgroundColor;
+  color: $navText;
+
+  .c-nav__link {
+    color: $navText;
+
+    &:hover {
+      background: $navHover;
+
+      .c-nav__icon--counter-text {
+        font-weight:normal;
+      }
+
+    }
+
+    &.active {
+      border-left-color: $navSelectedBorderColor;
+      color: $navSelected;
+      font-weight: bold;
+    }
+  }
+
+  .c-nav__section {
+    color: $navSectionColor;
+  }
+}
+
+.c-nav--corporate {
+  z-index: z('left-nav');
+  position: relative;
+}
+
+.c-nav--dark {
+  background-color: $navDarkBackgroundColor;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+
+  .c-nav__section {
+    color: $navDarkSectionColor;
+  }
+
+  .c-nav__link {
+    color: white;
+
+    &:hover, &.active, &:focus {
+      background: $navLinkHoverActive;
+    }
+
+    &.active {
+      &:before {
+        font-family: "Font Awesome 5 Solid";
+        content: "\f178";
+        display: none;
+      }
+    }
+    &--small {
+      display: block;
+      font-size: .75rem;
+      height: $navLinkHeight/2;
+      padding: 0 1rem;
+    }
+  }
+  .c-nav__icon--badge {
+    @extend .ml-1;
+    background: #d77136;
+    border-radius: 0.75rem;
+    color: white;
+    display: inline-block;
+    font-size: .75rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    min-width: 1.5rem;
+    padding: 0 .25rem;
+    text-align: center;
+  }
+}
+
+// Skip Nav
+// --------
+
+.skip-nav a {
+  position: absolute;
+  top: -50px; // hide the content until focused
+  transition: top 0.5s ease;
+  z-index: 100000;
+
+  // center the item on the nav bar
+  left: 50%;
+  margin-left: -70px;
+
+  &:focus {
+    top: 3px;
+  }
+}
+
+// NAV LIST
+// --------
+
+.nav-list {
+  background-color: $nav-background;
+  color: $nav-text;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+
+  li {
+    color: $nav-text;
+    background-color: inherit;
+  }
+
+  a {
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: $small-screen-max-width) {
+  .nav-list ul {
+    text-align: center !important;
+    padding-left: 0px !important;
+  }
+}
+
+.nav-list li a,
+.nav-list .nav-header {
+  margin: 0;
+  text-shadow: none;
+  @include transition(none);
+}
+.nav-list li a {
+  color: $nav-text;
+  padding: 8px;
+  &:hover,
+  &:focus {
+    padding-left: 4px;
+    border-left: 4px solid $nav-hover;
+    background-color: $nav-background;
+  }
+}
+.nav-list .active {
+  padding-right: 6px;
+  margin-right: -6px;
+  overflow: visible;
+  background-color: $nav-selected-bg;
+}
+.nav-list .active a,
+.nav-list .active a:hover,
+.nav-list .active a:focus {
+  color: $nav-text;
+  text-shadow: none;
+  padding-left: 8px;
+  border-left: 0;
+  background-color: $nav-selected-bg;
+  cursor: default;
+  background-image: none;
+}
+.nav-list [class^="icon-"],
+.nav-list [class*=" icon-"] {
+  margin-right: 5px;
+  margin-left:10px;
+}
+// Dividers (basically an hr) within the dropdown
+.nav-list .divider {
+  @include nav-divider();
+}
+//Fixing for moz, which doesn't like the float
+.nav-list .right-icon {
+  float: inherit;
+  top: 12px;
+  right: 15px;
+  position: absolute;
+}
+.nav-list .corner {
+  position: absolute;
+  right: 0px;
+  bottom: -6px;
+  width: 0;
+  height: 0;
+  border-left: 3px solid darken($landing-red, 15%);
+  border-top: 3px solid darken($landing-red, 15%);
+  border-bottom: 3px solid transparent;
+  border-right: 3px solid transparent;
+}
+// Hacking a way for the corner to display if there isn't a page reload -- corners everywhere, only sometimes display them.
+.nav-list li .corner {
+  display: none;
+}
+.nav-list li.active .corner {
+  display: block;
+}
+
+.nav-header {
+  margin-top: 15px;
+  font-weight: normal;
+  font-size: 11px;
+  margin-left: -10px;
+  text-transform: uppercase;
+  color: $concrete;
+}
+.nav-pills > .active > a {
+  background: $pillColor;
+  color: $wet-asphalt;
+
+  &:hover {
+   background: $pillColor;
+   color: $wet-asphalt;
+  }
+}
+
+.nav-pills > li > a {
+  color: lighten($wet-asphalt, 15%);
+  @include border-radius($baseBorderRadius);
+}
+
+// Bottom Sticky Navbar
+.c-navbar-mobile {
+  background-color: $navStickyBGColor;
+  box-shadow: 0 0 4px 0 rgba(102, 102, 102, 0.5);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+
+  &__link {
+    display: inline-block;
+    margin: 0 0.25rem;
+    text-align: center;
+    color: $navIconColor;
+    padding-top: .75rem;
+    min-width: 3rem;
+
+    &:hover, &:focus {
+      color: $navStickyActiveTextColor;
+    }
+
+    &:active, &.is-active {
+      color: $navStickyActiveTextColor;
+      font-weight: bold;
+    }
+  }
+
+  &__icon {
+    margin-bottom: .2rem;
+  }
+}

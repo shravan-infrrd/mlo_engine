@@ -1,0 +1,120 @@
+// Transparents
+// -------------------------
+$transparentClouds: rgba(236, 240, 241, 0.85);
+
+$baseBorderRadius:      2px !default;
+$borderRadiusLarge:     2px !default;
+$borderRadiusSmall:     1px !default;
+$inputBorderWidth:      2px !default;
+$inputBorderColor:      #dce4ec !default;
+$inputBorderRadius:     2px !default;
+$inputFocusColor:       lighten($main-purple, 35%);
+
+// Scaffolding
+// -------------------------
+$bodyBackground:        $white !default;
+$textColor:             $grayDark !default;
+
+// Typography
+// -------------------------
+
+$sansFontFamily:        Roboto, Arial, sans-serif !default;
+$baseFontSize:          1rem !default;
+
+$baseFontFamily:        $sansFontFamily !default;
+$baseLineHeight:        20px !default;
+
+// Links
+// -------------------------
+$linkColor:             $light-navy;
+$linkColorHover:        darken($linkColor, 15%) !default;
+
+// Pills
+// -------------------------
+$pillColor:             $silver !default;
+
+// Component sizing
+// -------------------------
+// Based on 14px font-size and 20px line-height
+$mobile-max-width:          767px;
+$mobile-max-height:         450px;
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+
+// Z-index master list
+// -------------------------
+$zindexFlash:             999999 !default;
+
+// Input placeholder text color
+// -------------------------
+$placeholderText:         $grayLight !default;
+
+// Progress Bar
+// -------------------------
+$progressBarPrimaryBackground:  $action-green !default;
+$progressBarWarningBackground:  darken($subtle-yellow, 15%) !default;
+$progressBarDangerBackground:   $alizarin !default;
+$progressBarSuccessBackground:  $action-green !default;
+$progressBarBackground:                 $asbestos !default;
+
+// Dropdown
+$dropDownLink:            $gun-metal !default;
+
+// Navbar
+// -------------------------
+$navbarHeightLarge:                 4.375rem !default;
+$navbarHeightSmall:                 3.125rem !default;
+$navbarBackground:             $nav-header !default;
+
+$navLinkHeight:                40px !default;
+$navbarText:                   $gun-metal;
+
+//Navs
+// -------------------------
+
+// Main Nav
+$navText:                      $gun-metal;
+$navBackgroundColor:           $gallery;
+$navHover:                     $alabaster;
+$navSelected:                  $tundora;
+$navSelectedBorderColor:       $blue-lagoon;
+$navCounterColor:              $reddamask;
+$navIconColor:                 $gun-metal;
+$navSectionColor:              $middleGray;
+$navLinkHoverActive:           rgba(255,255,255,0.1);
+
+// Dark Nav
+$navDarkBackgroundColor:       #272727;
+$navDarkSectionColor:          $roostify-gray;
+
+
+// Sticky Nav
+$navStickyBGColor:             $wildsand;
+$navStickyActiveTextColor:     $matisse;
+
+// Tabbar
+// -------------------------
+$tabbarHeight:                    40px !default;
+
+// Form states and alerts
+// -------------------------
+$warningText:             $alert-text !default;
+$warningBackground:       #fcf8e3 !default;
+
+$errorText:               $alert-text !default;
+$errorBackground:         $soft-peach !default;
+
+$successText:             $alert-text !default;
+$successBackground:       #dff0d8 !default;
+
+$infoText:                $alert-text !default;
+$infoBackground:          #d9edf7 !default;
+
+// TODO Remove these for bootstrap methods
+// see the _layout.css.scss for examples
+// -------------------------
+$medium-screen-max-width: 1000px;
+$small-screen-max-width: 767px;

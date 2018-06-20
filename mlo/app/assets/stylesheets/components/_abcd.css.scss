@@ -1,0 +1,123 @@
+.c-mlo-search {
+  @include make-container();
+  @include make-col-ready();
+  @include make-col(12);
+  @include media-breakpoint-up(md) {
+    @include make-col(8);
+    padding: 0;
+  }
+  @include media-breakpoint-up(lg) {
+    @include make-col(6);
+    padding: 0;
+  }
+  padding-right: 15px;
+  padding-left: 15px;
+ &__header {
+   margin-top: 3rem;
+   @include l-vr-1();
+ }
+ &__sub-heading {
+  @include l-vr-6();
+ }
+ &__search-info {
+  @include l-vr-3();
+ }
+ &__search-wrap {
+   margin-bottom: 3rem;
+ }
+ &__list-wrap {
+   border-bottom: 1px solid #cccccc;
+   @include l-vr-6();
+   @extend .d-flex;
+   @extend .flex-row;
+ }
+ &__mlo-avatar {
+   @include make-col-ready();
+   @include make-col(3);
+    background-color: #f4f7f4;
+    padding: 0px 14px;
+    border-radius: 0.25rem;
+    font-size: 21vw;
+    height: 23vw;
+    margin-right: 0.5rem;
+    @include media-breakpoint-up(sm) {
+     font-size: 22vw;
+     padding-left: 27px;
+    }
+    @include media-breakpoint-up(md) {
+     @include make-col(2);
+     font-size: 9vw;
+     height: 10vw;
+     padding-left: 18px;
+    }
+    @include media-breakpoint-up(lg) {
+      @include make-col(2);
+      font-size: 6vw;
+      height: 7vw;
+      padding: 0px 12px; 
+     }
+     @include media-breakpoint-up(xl) {
+      padding: 0px 15px; 
+     }
+ }
+&__pic {
+  padding: 0;
+  border-radius: 0.25rem;
+  margin-right: 0.5rem;
+}
+ &__details {
+  @include make-col-ready();
+  @include l-vr-2();
+ }
+ &__mlo-name {
+   margin-right: 14px;
+   @include media-breakpoint-up(md) {
+    display: flex;
+    flex-wrap: wrap; 
+   }
+ }
+ &__nmls {
+   @extend .align-self-end;
+   @include l-vr-2();
+   @include media-breakpoint-up(md) {
+     margin-bottom: 6px;
+   }
+ }
+ &__mlo-info {
+  @include l-vr-3();
+ }
+ &__contact {
+   @extend .align-items-center;
+   @extend .d-inline-flex;
+   @include l-vr-4();
+   @include make-col-ready();
+   @include make-col(9);
+   @include media-breakpoint-up(md) {
+    @include make-col(6);
+  }
+  @include media-breakpoint-up(lg) {
+    @include make-col(7);
+  }
+   @include media-breakpoint-up(xl) {
+    @include make-col(5);
+  }
+ }
+ &__phone {
+  margin-left: 0.5rem;
+ }
+ &__email {
+  margin-left: 0.5rem;
+}
+ &__arrow {
+   display: none;
+   @extend .align-self-center;
+   @include media-breakpoint-up(md) {
+    @include make-col-ready();
+    @include make-col(1);
+    display: block;
+    font-size: 30px;
+    text-align: right;
+    margin-right: 0.9375rem;
+   }
+ }
+}

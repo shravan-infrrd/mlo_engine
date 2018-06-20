@@ -1,0 +1,137 @@
+:css
+  ul.autocomplete-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow: auto;
+    z-index: 9999;
+    border: 1px solid #eeeeee;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.4);
+  }
+  
+  ul.autocomplete-menu a {
+    font-weight: normal;
+    color: #333333;
+  }
+  
+  .ui-helper-hidden-accessible {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  .ui-state-active,
+  .ui-state-focus {
+    color: #23527c;
+    background-color: #eeeeee;
+  }
+  
+  .autocomplete-feedback {
+    width: 1.5em;
+    height: 1.5em;
+    overflow: hidden;
+    margin-top: .5em;
+    margin-right: .5em;
+  }
+  
+  .loader {
+    font-size: 10px;
+    text-indent: -9999em;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    background: #333;
+    background: -moz-linear-gradient(left, #333333 10%, rgba(255, 255, 255, 0) 42%);
+    background: -webkit-linear-gradient(left, #333333 10%, rgba(255, 255, 255, 0) 42%);
+    background: -o-linear-gradient(left, #333333 10%, rgba(255, 255, 255, 0) 42%);
+    background: -ms-linear-gradient(left, #333333 10%, rgba(255, 255, 255, 0) 42%);
+    background: linear-gradient(to right, #333333 10%, rgba(255, 255, 255, 0) 42%);
+    position: relative;
+    -webkit-animation: load3 1.4s infinite linear;
+    animation: load3 1.4s infinite linear;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  .loader:before {
+    width: 50%;
+    height: 50%;
+    background: #333;
+    border-radius: 100% 0 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+  }
+  
+  .loader:after {
+    background: #fff;
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  
+:javascript
+  $(function() {
+   $('#assign_search_field').autocomplete({
+    minLength: 1,
+    source: [{first_name: 'Monica', last_name: 'Schwartz', city: 'Cloverside', county: 'X County', state: 'NJ'},
+            {first_name: 'Sally', last_name: 'Monica', city: 'Trenton', county: 'X County', state: 'NJ'},
+            {first_name: 'Bob', last_name: 'Barker', city: 'Monica Hills', county: 'X County', state: 'NY'}],
+    sortResults: true,
+    focus: function(event, ui) {
+        // $('#assign_search_field').val(ui.item.first_name + ' ' + ui.item.last_name);
+        return false;
+    },
+    select: function(event, ui) {
+        var full_name = ui.item.first_name + ' ' + ui.item.last_name
+        $('#assign_search_field').val(full_name);
+        // var ids = $('#assignable_ids').val()
+        // $('#assignable_ids').val(ui.item.id + ',' + ids);
+        // $('.assign-to').append( $("<span class='label'>").text(full_name) );
+        // $('#assign_search_field').val('');
+        // $('#grant_access').removeClass('disabled');
+        // $('.solo-check').show();
+        //$.R.ModalHooks.handleContentUpdate.call($('#assign_loan_modal'));
+        return false;
+      }
+    }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+      return $( "<li></li>" )
+        .data( "item.autocomplete", item )
+        .append((item.zipcode) ? $("<a>").text(item.zipcode + ',') : $("<a>").text(' '),
+        $("<a>").text(item.first_name + ' ' + item.last_name + ',' + item.city_name + ',' + item.county_name) )
+        .appendTo( ul );
+    };
+
+    $('#assign_search_field').autocomplete("option", "appendTo");
+
+  })
+
+%h3 Inputs / Form Controls
+.example
+  .example__rendered.example__rendered--all
+    %section
+      .c-search
+        %input.c-search__input{ type: 'text' }
+        %i.td-icon.icon-regular.td-icon-search.c-search__icon
+      %br
+
+%input#assign_search_field.form-control.ui-autocomplete{ placeholder: "Type two characters of a city name...", type: "text", value: ""}/
+%input#assignable_ids{name: "assignable[ids]", type: "hidden"}/

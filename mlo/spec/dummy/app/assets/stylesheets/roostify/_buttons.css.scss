@@ -1,0 +1,467 @@
+// //
+// // Button Variables
+// // --------------------------------------------------
+
+// $btn-background-darken-percent: 14%;
+// $btn-transition:                background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+// $btn-border-width:              2px;         // For form controls and buttons
+// $btn-padding-y:                 .4375rem;   // note we need to account for the 2px border
+// $btn-padding-x:                 .625rem;   // note we need to account for the 2px border
+// $btn-border-radius:             .25rem;
+// $btn-focus-width:               .2rem !default;
+// $btn-focus-color:               rgba(#049cdb, .25) !default;
+// $btn-block-spacing-y:           .5rem !default;
+$btn-font-size:                 1rem;
+$btn-font-weight:               normal;
+$btn-font-family:               'WeblySleek UI Semilight';
+
+// // $btn-color:                     $tundora;
+// // $btn-bg-color:                  $gallery;
+
+// // $btn-bg-color__hover:           $gallery;
+// // $btn-border-color__hover:       $gun-metal;
+// // $btn-color__hover:              $tundora;
+
+// // $btn-bg-color__active:          $gun-metal;
+// // $btn-border-color__active:      $gun-metal;
+// $btn-color__active:             #FFFFFF;
+
+// //
+// // Disabled Button Colors
+// //
+
+// // $btn-color__disabled:        $gray;
+// // $btn-bg-color__disabled:     $mercurye;
+// // $btn-border-color__disabled: $mercurye;
+
+// //
+// // Button Link Colors
+// //
+
+// $btn-color__link__disabled: #4a4a4a !default;
+
+// //
+// // Button Sizes
+// //
+
+// // $btn-border-radius-sm: $border-radius-sm;
+// $btn-font-size-sm:     .875rem;
+// $btn-line-height-sm:   1;
+// $btn-padding-y-sm:     .4375rem;   // note we need to account for the 2px border
+// $btn-padding-x-sm:     .625rem;   // note we need to account for the 2px border
+
+// $btn-padding-y-xs:      .4375;
+// $btn-padding-x-xs:     .375rem;
+
+// //
+// // Button Modifiers
+// //
+
+// $btn-modifiers: (
+//   primary: (
+//     // background-color: $light-navy,
+//     // border-color: $light-navy,
+//     color: #FFF,
+//     hover-color: #FFF,
+//     // hover-background-color: darken($light-navy, $btn-background-darken-percent),
+//     // hover-border-color:     darken($light-navy, $btn-background-darken-percent),
+
+//     active-color: #FFF,
+//     // active-background-color: darken($light-navy, $btn-background-darken-percent),
+//     // active-border-color:     darken($light-navy, $btn-background-darken-percent)
+//   ),
+
+//   secondary: (
+//     // background-color: $battleship-grey,
+//     // border-color: $battleship-grey,
+//     color: #FFF,
+//     hover-color: #FFF,
+//     // hover-background-color: darken($battleship-grey, $btn-background-darken-percent),
+//     // hover-border-color:     darken($battleship-grey, $btn-background-darken-percent),
+
+//     active-color: #FFF,
+//     // active-background-color: darken($battleship-grey, $btn-background-darken-percent),
+//     // active-border-color:     darken($battleship-grey, $btn-background-darken-percent)
+//   ),
+
+//   ghost: (
+//     background-color: #fff,
+//     // border-color: $slate,
+//     // color: $slate,
+
+//     hover-color: #fff,
+//     // hover-background-color: $battleship-grey,
+//     // hover-border-color:     $battleship-grey,
+
+//     active-color: #fff,
+//     // active-background-color: darken($battleship-grey, $btn-background-darken-percent),
+//     // active-border-color:     darken($battleship-grey, $btn-background-darken-percent)
+//   ),
+
+//   danger: (
+//     // background-color: $guardsman-red,
+//     // border-color: $guardsman-red,
+//     color: #FFFFFF,
+//     hover-color: #fff,
+//     // hover-background-color: darken($guardsman-red, $btn-background-darken-percent),
+//     // hover-border-color:     darken($guardsman-red, $btn-background-darken-percent),
+
+//     active-color: #fff,
+//     // active-background-color: darken($guardsman-red, $btn-background-darken-percent),
+//     // active-border-color:     darken($guardsman-red, $btn-background-darken-percent)
+//   ),
+
+//   muted: (
+//     background-color: #fff,
+//     // border-color: $gallery,
+//     // color: $battleship-grey,
+
+//     hover-color: #FFF,
+//     // hover-background-color: $gun-metal,
+//     // hover-border-color:     $gun-metal,
+
+//     active-color: #fff,
+//     // active-background-color: $gun-metal,
+//     // active-border-color:     $gun-metal
+//   ),
+
+//   disguised: (
+//     background-color: transparent,
+//     border-color: transparent,
+//     // color: $battleship-grey,
+
+//     // hover-color: $battleship-grey,
+//     // hover-background-color: $gallery,
+//     // hover-border-color:     $gallery,
+
+//     // active-color: $battleship-grey,
+//     // active-background-color: $gallery,
+//     // active-border-color:     $gallery,
+//   )
+// );
+
+// @mixin button-size($padding-y, $padding-x, $font-size, $line-height, $border-radius) {
+//   padding: $padding-y $padding-x;
+//   font-size: $font-size;
+//   line-height: $line-height;
+//   @include border-radius($border-radius);
+// }
+
+// @mixin btn-modifier($config) {
+//   color: map-get($config, 'color');
+//   background-color: map-get($config, 'background-color');
+//   border-color: map-get($config, 'border-color');
+
+//   &.hover,
+//   &:hover,
+//   *:hover > &.btn--active-child {
+//     color: map-get($config, 'hover-color');
+//     background-color: map-get($config, 'hover-background-color');
+//     border-color: map-get($config, 'hover-border-color');
+//   }
+
+//   &.active,
+//   &:active,
+//   *:active > &.btn--active-child {
+//     color: map-get($config, 'active-color');
+//     background-color: map-get($config, 'active-background-color');
+//     border-color: map-get($config, 'active-border-color');
+//   }
+
+//   &.disabled,
+//   &:disabled {
+//     // color: $btn-color__disabled;
+//     // background-color: $btn-bg-color__disabled;
+//     // border-color: $btn-border-color__disabled;
+//   }
+// }
+
+
+//
+// Buttons
+//
+
+// TODO start a roostify reset?
+button { border: none; }
+
+.btn {
+  // color: $btn-color;
+  // background-color: $btn-bg-color;
+  // border: $btn-border-width solid $btn-bg-color;
+  // border-radius: $btn-border-radius;
+  cursor: pointer;
+  display: inline-block;
+  font-size: $btn-font-size;
+  font-weight: $btn-font-weight;
+  line-height: 1.5;
+  font-family: $btn-font-family;
+  border-radius: 5px;
+  border-width: 1px;
+  border: 1px solid transparent;
+
+  //transition: $btn-transition;
+  text-align: center;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding: 8px;
+
+  &:focus,
+  &.focus {
+    outline: 0;
+    text-decoration: none;
+  }
+
+  &.disabled,
+  &:disabled {
+    // color: $gray;
+    // background-color: $btn-bg-color__disabled;
+    // border-color: $btn-border-color__disabled;
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  &--primary {
+    color: #fff;
+    background-color: #008a00;
+    border-color: #008a00;
+    
+    &.hover,
+    &:hover,
+    *:hover > &.btn--active-child {
+      color: #fff;
+      background-color: #007c16;
+      // color: $btn-color__hover;
+      // background-color: $btn-bg-color__hover;
+      // border-color: $btn-border-color__hover;
+    }
+  
+    &:focus,
+    &.focus {
+      outline: 0;
+      text-decoration: none;
+    }
+  
+    &:active,
+    &.active,
+    *:active > &.btn--active-child {
+      color: #fff;
+      background-color: #1a9630;
+      border-color: #008a00;
+      outline: none;
+      // color: $btn-color__active;
+      // background-color: $btn-bg-color__active;
+      // border-color: $btn-border-color__active;
+    }
+  
+    &.disabled,
+    &:disabled {
+      // color: $gray;
+      // background-color: $btn-bg-color__disabled;
+      // border-color: $btn-border-color__disabled;
+    }
+  
+    &.hidden {
+      display: none;
+    }
+  }
+
+  &--secondary-clear {
+    color: #038203;
+    background-color: transparent;
+    border-color: #008a00;
+    border-width: 1px;
+    
+    &.hover,
+    &:hover,
+    *:hover > &.btn--active-child {
+      outline: none;
+      color: #038203;
+      background-color: #f4f7f4;
+      // color: $btn-color__hover;
+      // background-color: $btn-bg-color__hover;
+      // border-color: $btn-border-color__hover;
+    }
+  
+    &:focus,
+    &.focus {
+      outline: 0;
+      text-decoration: none;
+    }
+  
+    &:active,
+    &.active,
+    *:active > &.btn--active-child {
+      color: #038203;
+      background-color: #d8e2d8;
+      border-color: #008a00;
+      outline: none;
+      // color: $btn-color__active;
+      // background-color: $btn-bg-color__active;
+      // border-color: $btn-border-color__active;
+    }
+  
+    &.disabled,
+    &:disabled {
+      // color: $gray;
+      // background-color: $btn-bg-color__disabled;
+      // border-color: $btn-border-color__disabled;
+    }
+  
+    &.hidden {
+      display: none;
+    }
+  }
+}
+
+
+
+.btn--secondary-clear-green {
+
+}
+
+
+
+// Future-proof disabling of clicks on `<a>` elements
+// a.btn.disabled,
+// fieldset[disabled] a.btn {
+//   pointer-events: none;
+// }
+
+
+//
+// Button Modifiers
+//
+
+// @each $modifier, $config in $btn-modifiers {
+//   .btn--#{$modifier} {
+//     @include btn-modifier($config)
+//   }
+// }
+
+// TODO: Update fringe case deprecated btn-primary buttons and delete this
+// .btn-primary {
+//   @extend .btn--primary;
+// }
+
+//
+// Link buttons
+// Make a button look and behave like a link
+
+// .btn--link {
+//   // color: $light-navy;
+//   background-color: transparent;
+
+//   &:hover,
+//   &.hover,
+//   *:hover > &.btn--active-child {
+//     // color: $light-navy;
+//     // background-color: $gallery;
+//     // border-color: $gallery;
+//   }
+
+//   &:focus,
+//   &.focus {
+//     // color: $light-navy;
+//   }
+
+//   &:active,
+//   &.active,
+//   *:active > &.btn--active-child {
+//     // color: $light-navy;
+//     // background-color: $gallery;
+//     // border-color: $gallery;
+//   }
+
+//   &:disabled,
+//   &.disabled {
+//     // color: $btn-color__link__disabled;
+//   }
+// }
+
+
+// //
+// // Small Buttons
+// //
+
+// .btn--sm {
+//   // @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+// }
+
+// //
+// // Icon Buttons
+// //
+// .btn--xs {
+//   // @include button-size($btn-padding-y-xs, $btn-padding-x-xs, $btn-font-size, $btn-line-height, $btn-border-radius);
+// }
+
+// //
+// // Block button
+// //
+
+// .btn--block {
+//   display: block;
+//   width: 100%;
+// }
+
+// // Vertically space out multiple block buttons
+// .btn--block + .btn--block {
+//   margin-top: $btn-block-spacing-y;
+// }
+
+// // Specificity overrides
+// input[type="submit"],
+// input[type="reset"],
+// input[type="button"] {
+//   &.btn--block {
+//     width: 100%;
+//   }
+// }
+
+// .btn--remove {
+//   height: 25px;
+//   width: 25px;
+//   border: none;
+//   background: url(https://s3-us-west-1.amazonaws.com/roostifystatic/static/misc_icons/cancel_icon.png) transparent no-repeat;
+//   background-size: 25px 25px;
+// }
+
+// // Admin Panes
+// // --------------------------------------------------
+// .button-set {
+//   text-align: right;
+//   .btn {
+//     margin: 4px 0 0 8px;
+//   }
+// }
+// .button-set--modal {
+//   text-align: right;
+//   .btn {
+//     margin: 0 0 0 8px;
+//   }
+// }
+
+// // Circlular Buttons
+// // ---------------------------------------------------
+// .btn--circle {
+//   width: 2.625rem;
+//   height: 2.625rem;
+//   text-align: center;
+//   display: inline-flex;
+//   align-items: center;
+//   justify-content: center;
+//   border-radius: 50%;
+// }
+
+// // Icon Buttons
+// // ---------------------------------------------------
+// // TODO: This should be removed for btn--icon
+// .btn--icn {
+//   padding: .18rem 0.75rem;
+//   font-size: 1.375rem;
+//   &.active {
+//     // color: $light-navy;
+//   }
+// }

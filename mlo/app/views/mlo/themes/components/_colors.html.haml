@@ -1,0 +1,17 @@
+%h1 Colors
+
+- colors = { 'cod-gray': "#1c1c1c", white: "#ffffff", boulder: "#767676", tasman: "#D8E4D7", 'milk-punch': "#FFF8D7", 'pot-pourri': "#F7E8E9", 'orange-roughy': "#C55415", 'green-pea': "#1A5336", 'japanese-laurel':  "#008A00", 'boulder-approx':  "#797979", 'snow-drift': "#F4F7F4", whisper: "#f3f3f8", silver: "#cccccc", 'japanese-laurel-1': "#038203", narvik:  "#f7fcf8", 'narvik-approx':  "#ebf8ee"}
+
+.container
+  .row
+    - colors.each do |name, color|
+      .col-3
+        .card{ style: "margin: 5px;" }
+          .card-img-top{ style: "border: 1px solid #666; height: 70px; background-color: #{color}" }
+          .card-body
+            %h3.card-title
+              = name
+              %br
+              = color
+
+

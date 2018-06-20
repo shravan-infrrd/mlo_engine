@@ -1,0 +1,22 @@
+//
+// Bootstrap 4 Variable Overrides
+// --------------------------------------------------
+
+// TODO move variables to a roostify class and create a bootstrap variables file
+// with only bootstrap variables setting
+
+$grid-gutter-width: 0.75rem;
+$input-border-radius: .125rem;
+$input-border-radius-lg: .125rem;
+
+$border-radius:         .25rem;
+$border-radius-sm:      .2rem !default;
+
+$font-size-base:        $baseFontSize;
+$font-family-sans-serif: $sansFontFamily;
+$font-family-base: $baseFontFamily;
+
+$body-color: $textColor;
+$body-bg: $bodyBackground;
+
+

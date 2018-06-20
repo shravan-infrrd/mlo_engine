@@ -1,0 +1,41 @@
+:javascript
+
+  $( document ).ready(function() {
+    var $selector = $('#js-icon__name');
+    var $icon = $('#js-example__icon');
+    var $ext = $('#js-icon__ext');
+    function updateIconName() {
+      var iconName = $selector.val();
+      var iconExt = $ext.val();
+      console.log(iconName, iconExt)
+      $icon.attr('class','')
+        .addClass('example__icon')
+        .addClass(iconExt)
+        .addClass(iconName);
+    }
+
+    updateIconName();
+
+    $("#js-icon__name, #js-icon__ext").keyup( function () {
+      updateIconName();
+    });
+
+  });
+
+%h1 Icons
+.example.mt-2.mb-4
+  .example__rendered.example__rendered--all
+    .row.m-4
+      .col-2
+        %h3 Search Icons:
+      .col-3
+        %input#js-icon__ext{type: 'text', value: 'td-icon', style: "width: 100%"}
+      .col-6
+        %input#js-icon__name{type: 'text', value: 'td-icon-AccidentSickness', style: "width: 100%"}
+      .col-1
+        %it#js-example__icon.icon-large{style: "font-size: 2rem;"}
+      -# .span.td-icon.td-icon-colour-primary.icon-regular.td-icon-AccidentSickness 
+    %h3 Setting icon and size
+    Add "td-icon icon-regular td-icon-xxx" classes with the name of the icon.
+    Icon sizes can be set with the following classes: icon-small, icon-regular, icon-medium, icon-large.
+    Alternatively, sizes can be customized in css by setting the font-size on the element with the .td-icon class.

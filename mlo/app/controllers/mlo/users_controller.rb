@@ -2,15 +2,19 @@ require_dependency "mlo/application_controller"
 
 module Mlo
   class UsersController < ApplicationController
-    skip_before_action :authenticate_user!, only: %i(index find show_mlo_results referral join branded_signin)
+#    skip_before_action :authenticate_user!, only: %i(index find show_mlo_results referral join branded_signin)
 
 
     def index
-      @users = find_mlo_results 
+      puts "====1===="
+      @users = find_mlo_results
+      puts "====3===="
     end
 
 
     def find_mlo_results
+      puts "====2===="
+
       users = User #.with_role(:lender)
       users = users.joined_with_account
       q = "%#{params[:term]}%".upcase
@@ -28,12 +32,14 @@ module Mlo
                          q, q, q, q, q, q)
       # users = User.search(params[:assign_search_field], users) if params[:assign_search_field]
       users = users.paginate(page: params[:page], per_page: 5)
-      Rails.logger.debug "======>#{users.inspect}"
-      users
+      # Rails.logger.debug "======>#{users.inspect}" #rescue
+      return users
+
     end
 
 
     def show_mlo_results
+      puts "----*****----here"
       @users = find_mlo_results
       render partial: 'render_mlo'
     end

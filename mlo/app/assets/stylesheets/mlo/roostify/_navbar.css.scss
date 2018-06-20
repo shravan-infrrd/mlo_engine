@@ -1,0 +1,88 @@
+// --------------------------------------------------
+// Navbar
+// --------------------------------------------------
+
+.c-navbar {
+  height: 4.375rem;
+  border-bottom: .125rem solid #d4d9df;
+  background-color: white;
+  z-index: z('navbar');
+  position: relative;
+  padding: 0 1.75rem;
+
+  @include media-breakpoint-down(sm) {
+    height: 3.125rem;
+  }
+
+  &__icon { font-size: 2rem; }
+
+  &__nav-link {
+    font-size: 0.875rem;
+    color: #62767E;
+  }
+
+  &__messages {
+    display: inline;
+    vertical-align: middle;
+
+    @include media-breakpoint-up(xl) {
+      display: none;
+    }
+
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
+
+  &__messages-icon {
+    display: inline;
+    vertical-align: middle;
+  }
+
+
+  @include media-breakpoint-down(sm) {
+    &__icon { font-size: 1.25rem; }
+  }
+
+  &__container {
+    @include make-container();
+    height: 100%;
+  }
+
+  &__row {
+    @include make-row();
+    align-items: center;
+    height: 100%;
+  }
+
+  &__primary-nav {
+    @include make-col-ready();
+    @include make-col(2);
+  }
+
+  &__center {
+    @include make-col-ready();
+    @include make-col(8);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    a { height: 100%; }
+  }
+
+  &__logo {
+    max-height: 100%;
+    max-width: 100%;
+    display: border-box;
+    padding-top: 0.875rem;
+    padding-bottom: 0.875rem;
+  }
+
+  &__secondary-nav {
+    @include make-col-ready();
+    @include make-col(2);
+    @extend .align-items-center;
+    text-align: right;
+  }
+}

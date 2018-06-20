@@ -1,0 +1,74 @@
+//
+// Mixins
+// --------------------------------------------------
+
+
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+@mixin nav-divider($color: #e5e5e5) {
+  height: 1px;
+  margin: (($line-height-computed / 2) - 1) 0;
+  overflow: hidden;
+  background-color: $color;
+}
+
+@mixin scrollable {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@mixin no-scrollbar {
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+@mixin on-small-screens {
+  @media only screen and (max-width: 767px) {
+    @content
+  }
+}
+
+@mixin on-large-screens {
+  @media only screen and (min-width: 768px) {
+    @content
+  }
+}
+
+@mixin border-radius($border-radius...) {
+  -moz-border-radius: $border-radius;
+  -webkit-border-radius: $border-radius;
+  border-radius: $border-radius;
+}
+
+@mixin box-shadow($shadow...) {
+  -moz-box-shadow: $shadow;
+  -o-border-radius: $shadow;
+  -webkit-border-radius: $shadow;
+  box-shadow: $shadow;
+}
+
+@mixin animation($animation...) {
+  -moz-animation: $animation;
+  -o-animation: $animation;
+  -webkit-animation: $animation;
+}
+
+// pixels-to-ems calculation
+// found here: https://css-tricks.com/snippets/sass/px-to-em-functions/
+@function calc-em($target-px, $context) {
+  @return ($target-px / $context) * 1em;
+}
+
+// 14px is the base font-size defined on body
+$browser-context: 14;
+
+@function em($pixels, $context: $browser-context) {
+  @return ($pixels / $context) * 1em;
+}
+// end pixels-to-ems calculation functions
